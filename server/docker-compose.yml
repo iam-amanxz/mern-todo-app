@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  mongo:
+    container_name: mongo-dev
+    image: mongo:5.0.6
+    ports:
+      - 27020:27017
