@@ -1,10 +1,7 @@
 import React from 'react'
 import { Flex, Heading, Select } from '@chakra-ui/react'
 
-export const Filter = ({
-  sort,
-  setSort,
-}: {
+interface FilterProps {
   sort: { field: string; order: string }
   setSort: React.Dispatch<
     React.SetStateAction<{
@@ -12,7 +9,9 @@ export const Filter = ({
       order: string
     }>
   >
-}) => {
+}
+
+export const Filter = ({ sort, setSort }: FilterProps) => {
   const handleSortTodos = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     switch (e.target.value) {
       case 'createdAt':
@@ -30,18 +29,18 @@ export const Filter = ({
   }
 
   return (
-    <Flex
-      h={'10%'}
-      p="5"
-      borderBottom="1px"
-      borderBottomColor="gray.300"
-      justify="space-between"
-    >
+    <Flex p="4" justify="space-between">
       <Heading size="xs" color="gray.700">
         Sort by:
       </Heading>
-      <Select data-testid="filter" w="30%" size="sm" onChange={handleSortTodos}>
-        <option value="createdAt">CreatedAt</option>
+      <Select
+        data-testid="filter"
+        w="36"
+        size="sm"
+        onChange={handleSortTodos}
+        borderRadius="lg"
+      >
+        <option value="createdAt">Created At</option>
         <option value="endDateAsc">End Date (asc)</option>
         <option value="endDateDesc">End Date (desc)</option>
       </Select>

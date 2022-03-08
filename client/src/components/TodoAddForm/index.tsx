@@ -1,8 +1,9 @@
 import { FormEvent, useState } from 'react'
-import { Button, Center, Flex, Input, InputGroup } from '@chakra-ui/react'
+import { Button, Flex, Input, InputGroup } from '@chakra-ui/react'
 import { useCreateTodoMutation } from '../../store/api/todoApi'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import './index.scss'
 
 export const TodoAddForm = () => {
   const [createTodo] = useCreateTodoMutation()
@@ -10,7 +11,6 @@ export const TodoAddForm = () => {
   const [endDate, setEndDate] = useState(new Date())
 
   const handleCreateTodo = async (e: FormEvent) => {
-    console.log('hello')
     e.preventDefault()
     if (title.trim() === '') return
 
@@ -22,11 +22,11 @@ export const TodoAddForm = () => {
 
   return (
     <form onSubmit={handleCreateTodo}>
-      <Flex p="5" flexDir="column">
-        <Flex mb="3" gap="3">
+      <Flex p="4" flexDir="column">
+        <Flex mb="3" gap="3" flexDir={['column', 'row']}>
           <Input
+            flexGrow="1"
             data-testid="title"
-            w="60%"
             placeholder="Title"
             value={title}
             onChange={(e) => {
@@ -34,32 +34,34 @@ export const TodoAddForm = () => {
             }}
           />
           <InputGroup
+            maxW={{ sm: '32' }}
             border="1px"
             borderColor="gray.300"
             borderRadius="md"
-            w="40%"
+            style={{ display: 'grid', placeItems: 'center' }}
+            py="1"
           >
-            <Center p="1">
-              <DatePicker
-                data-testid="endDate"
-                selected={endDate}
-                onChange={(date: Date) => setEndDate(date)}
-              />
-            </Center>
+            <DatePicker
+              wrapperClassName="datePicker"
+              data-testid="endDate"
+              selected={endDate}
+              onChange={(date: Date) => setEndDate(date)}
+            />
           </InputGroup>
         </Flex>
 
         <Button
+          disabled={title.trim() === ''}
           data-testid="create"
           type="submit"
           bg="success"
           w="full"
           color="white"
           _hover={{
-            bg: 'green.400',
+            bg: 'success',
           }}
         >
-          +Add
+          Add Todo
         </Button>
       </Flex>
     </form>

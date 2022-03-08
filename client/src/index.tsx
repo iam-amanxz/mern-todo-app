@@ -8,9 +8,9 @@ import store from './store'
 import '@fontsource/roboto'
 
 const colors = {
-  brand: '#742ECC',
-  success: '#2ECC8A',
-  danger: '#F15D5D',
+  brand: '#3a0ca3',
+  success: '#38b000',
+  danger: '#e5383b',
 }
 
 const fonts = {

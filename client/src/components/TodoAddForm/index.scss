@@ -1,0 +1,11 @@
+.datePicker {
+  input {
+    width: 100%;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+  }
+}

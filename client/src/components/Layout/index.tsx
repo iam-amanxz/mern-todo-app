@@ -1,40 +1,34 @@
 import { Box, Center, Heading } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 
-export const Layout = ({
-  top,
-  bottom,
-}: {
+interface LayoutProps {
   top: ReactNode | ReactNode[]
-  bottom: ReactNode
-}) => {
+  bottom: ReactNode | ReactNode[]
+}
+
+export const Layout = ({ top, bottom }: LayoutProps) => {
   return (
-    <Center
-      p={{ lg: '10' }}
-      bg="brand"
-      w="100vw"
-      h={'100vh'}
-      flexDir="column"
-      justifyContent="space-between"
-    >
-      <Center p="10">
-        <Heading color="white" h="10%">
-          Todo App
-        </Heading>
+    <Center bg="brand" w="100vw" h={'100vh'} flexDir="column">
+      <Center mb="5">
+        <Heading color="white">Todo App</Heading>
       </Center>
-      <Box bg="white" w="100%" maxW="xl" h="65%">
-        {top}
-      </Box>
-      <Box
-        bg="white"
-        w="100%"
-        maxW="xl"
-        h="15%"
-        borderTop="1px"
-        borderTopColor="gray.300"
-      >
-        {bottom}
-      </Box>
+      <Center flexDir="column">
+        <Box
+          mb="5"
+          bg="white"
+          borderRadius="lg"
+          w={['350px', '400px', '500px', '530px']}
+        >
+          {top}
+        </Box>
+        <Box
+          borderRadius="lg"
+          bg="white"
+          w={['350px', '400px', '500px', '530px']}
+        >
+          {bottom}
+        </Box>
+      </Center>
     </Center>
   )
 }

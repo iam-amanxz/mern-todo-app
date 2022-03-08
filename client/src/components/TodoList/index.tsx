@@ -11,12 +11,14 @@ export const TodoList = ({
   const { data, error, isLoading, isSuccess } = useGetAllTodoQuery({ ...sort })
 
   return (
-    <Box overflowY="scroll" h={'90%'}>
-      <Center p="5">
-        {isLoading && <Text>Loading...</Text>}
-        {error && <Text>Error :(</Text>}
+    <Box overflowY="scroll" flexGrow="1">
+      <Center>
+        {isLoading && <Text p={['2', '4']}>Loading...</Text>}
+        {error && <Text p={['2', '4']}>Error :(</Text>}
 
-        {isSuccess && !data.length && <Text>No Todo found! please add</Text>}
+        {isSuccess && !data.length && (
+          <Text p={['2', '4']}>No Todo found! Please add</Text>
+        )}
       </Center>
 
       {data?.map((todo: Todo) => (

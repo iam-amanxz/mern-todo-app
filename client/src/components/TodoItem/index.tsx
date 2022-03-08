@@ -13,7 +13,6 @@ export const TodoItem = ({ todo }: { todo: Todo }) => {
   const [itemHovered, setItemHovered] = React.useState(false)
 
   const handleToggleTodoCompleted = async () => {
-    console.log(todo.completed)
     await toggleTodoCompleted({
       id: todo._id,
       completed: !todo.completed,
@@ -25,9 +24,9 @@ export const TodoItem = ({ todo }: { todo: Todo }) => {
 
   return (
     <Flex
-      p="5"
+      p={['2', '4']}
       justifyContent="space-between"
-      onMouseEnter={() => {
+      onMouseOver={() => {
         setItemHovered(true)
       }}
       onMouseLeave={() => {
@@ -36,6 +35,7 @@ export const TodoItem = ({ todo }: { todo: Todo }) => {
       _hover={{ bg: 'gray.100' }}
     >
       <Checkbox
+        colorScheme="messenger"
         onChange={handleToggleTodoCompleted}
         cursor="pointer"
         size="lg"
