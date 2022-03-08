@@ -5,7 +5,6 @@ context('E2E', () => {
         method: 'GET',
         url: 'http://localhost:3333/api/todo',
       }).then((response) => {
-        console.log(response)
         const todos = response.body
         todos.forEach((todo) => {
           cy.request({
@@ -55,7 +54,7 @@ context('E2E', () => {
       cy.contains('Buy Milk @Mar 25, 2022').trigger('mouseover')
       cy.get('[data-testid="remove"]').click()
       cy.contains('Buy Milk @Mar 25, 2022').should('not.exist')
-      cy.contains('No Todo found! please add').should('exist')
+      cy.contains('No Todo found! Please add').should('exist')
     })
 
     it('should sort the todos', () => {
@@ -96,7 +95,6 @@ context('E2E', () => {
         method: 'GET',
         url: 'http://localhost:3333/api/todo',
       }).then((response) => {
-        console.log(response)
         const todos = response.body
         todos.forEach((todo) => {
           cy.request({

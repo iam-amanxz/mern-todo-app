@@ -40,8 +40,6 @@ export const service = {
     id: string,
     completed: string,
   ): Promise<Todo | null> => {
-    console.log({ completed })
-
     try {
       return await TodoModel.findByIdAndUpdate(
         id,
