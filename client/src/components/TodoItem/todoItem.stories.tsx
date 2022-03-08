@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { ComponentMeta } from '@storybook/react'
 import { Provider } from 'react-redux'
 import { TodoItem } from '.'

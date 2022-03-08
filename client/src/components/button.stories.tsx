@@ -20,10 +20,10 @@ const Template = (args: {
   bg: string
 }) => <Button {...args}>{args.children}</Button>
 
-export const Primary = Template.bind({})
-Primary.args = {
-  bg: '#3a0ca3',
+export const Brand = Template.bind({})
+Brand.args = {
   color: 'white',
+  bg: '#3a0ca3',
   children: 'Brand',
 }
 export const Success = Template.bind({})
